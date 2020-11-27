@@ -1,2 +1,263 @@
 sample
 ===================
+<!-- <p style="color: black;padding-top: 10em;">matrix works!</p><br> -->
+
+
+<div style="background-color: white;padding-top: 5em;">
+
+<div class="col-md-12" style="padding:0em 1em 0em 1em;" >
+    <div class="panel panel-default customPanel" >
+
+            <form style="padding-top:1.2em;background-color: #b3c7d6ff;border-radius: 0em;border:0px solid black;">
+                <div class="form-row col-md-12">
+                 <span style="padding-bottom: 0.4em;margin-left: 2em;font-size:22px;font-weight: 500;">Customer Table</span>   
+                 
+                 <div class="col-md-2 offset-md-8" style="padding-bottom: 1em;margin-top: 0em;">
+                    <input type="text" class="form-control" style="height: 2em;" autocomplete="off" (keyup)="applyFilter($event)" placeholder="Search">
+                  </div>
+                </div> 
+            </form>
+
+
+            <div class="panel-body" style="max-height:32.3em;overflow-y: scroll; overflow-x: hidden;">
+                
+                <div class="mat-elevation-z8">
+                <table class="table-hover" mat-table [dataSource]="dataSource" matSort multiTemplateDataRows >
+                    <ng-container matColumnDef="Grid">
+                    <th mat-header-cell *matHeaderCellDef > Grid </th>
+                    <td mat-cell *matCellDef="let element" > {{element.GRID}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="CIND">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>CIND</th>
+                    <td mat-cell *matCellDef="let element" >{{element.CIND}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Name" >
+                        <th mat-header-cell *matHeaderCellDef > Name </th>
+                        <td mat-cell *matCellDef="let element" > {{element.Name}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ClientType" >
+                        <th mat-header-cell *matHeaderCellDef > Client Type </th>
+                        <td mat-cell *matCellDef="let element" > {{element.ClientType}}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="Country">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+                    <td mat-cell  *matCellDef="let element">{{element.Country}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="LOB">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>LOB</th>
+                        <td mat-cell  *matCellDef="let element">{{element.LOB}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="HasTransactions">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Has Transactions</th>
+                        <td mat-cell  *matCellDef="let element">{{element.HasTransactions}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="NumberOfTransactions">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Number Of Transactions</th>
+                        <td mat-cell  *matCellDef="let element">{{element.NumberOfTransactions}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="TotalAmount">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
+                        <td mat-cell  *matCellDef="let element">{{element.TotalAmount}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="NKYC_STATUS_LATEST">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>NKYC STATUS LATEST</th>
+                        <td mat-cell  *matCellDef="let element">{{element.NKYC_STATUS_LATEST}} </td>
+                    </ng-container>
+                    
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                <ng-container>
+                    <td *ngIf="dataSource.data.length === 0" style="color:red !important;">{{message}}</td>
+                </ng-container>
+            
+                
+            </div>
+            <mat-paginator [pageSizeOptions]="[10,5,20]" [showFirstLastButtons]="true" ></mat-paginator>
+        </div>
+        
+ </div>
+</div>
+</div>
+
+
+
+
+
+==================================================================================
+table {
+    width: 100%;
+  }
+  
+  .body{
+    position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;
+    background-color: #000000;
+    
+    }
+
+  .logo{
+      width:3.5em;
+      height:3.5em;
+      margin-top:0em;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .mat-row:hover{
+      background-color:rgb(223, 221, 221);
+  }
+  .mat-row {
+    height:2.5em;
+    cursor: pointer;
+    /* max-height: 10em; */
+  }
+
+  .form-field{
+    height: 5.05em;
+  }
+  .mat-header-row{
+    height: 3em;
+  }
+  .mat-header-cell{
+      background-color:rgb(224, 238, 250);
+      border-color: red;
+      border-width: 2px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #000000;
+  }
+
+
+.mat-column-HasTransactions {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 12% !important;
+    width: 12% !important;
+  }
+  .mat-column-NumberOfTransactions {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+  }
+  .mat-column-NKYC_STATUS_LATEST {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+  }
+  .mat-column-reasons {
+    /* word-wrap: break-word !important; */
+    white-space: nowrap !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+  }
+
+  ::placeholder {
+    color: rgb(27, 27, 27);
+    font-size: 0.75em;
+  }
+
+  ::label {
+    color: #007bff;
+  }
+
+.form-group {
+  margin-bottom: 0rem;
+}
+
+========================================================
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MatrixComponent } from './matrix.component';
+
+describe('MatrixComponent', () => {
+  let component: MatrixComponent;
+  let fixture: ComponentFixture<MatrixComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ MatrixComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(MatrixComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+======================================================================
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort} from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+
+import { DataFetchService } from '../services/data-fetch.service';
+
+@Component({
+  selector: 'app-matrix',
+  templateUrl: './matrix.component.html',
+  styleUrls: ['./matrix.component.scss']
+})
+export class MatrixComponent implements OnInit {
+
+  public loading = false;
+  // displayedColumns: string[] = ['loanIdentifier','Name', 'defaultPredictionScore','category','unpaidBalanceAmount','reasons'];
+  displayedColumns: string[] = ['Grid','CIND','Name','ClientType','Country','LOB','HasTransactions','NumberOfTransactions','TotalAmount','NKYC_STATUS_LATEST'];
+  dataSource = new MatTableDataSource<any>();
+  expandedElement: any | null
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  constructor(private router:Router, public rest:DataFetchService) { }
+  
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.getMatrixData();
+    
+  }
+
+
+
+  message = "Loading data....";
+
+  getMatrixData = function(){
+    var data = {
+      "url": "http://vdhstapa304:8181/jsoncsv"
+    }
+    this.rest.get(data).subscribe(
+      (res) =>{  
+        this.dataSource.data=res;
+        
+      }
+    )
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+}
+
